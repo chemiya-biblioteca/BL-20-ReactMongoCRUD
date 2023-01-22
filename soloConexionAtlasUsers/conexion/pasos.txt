@@ -1,0 +1,17 @@
+mongo atlas
+crear proyecto
+build database
+database acess y crear nuevo usuario
+usuario y contraseña ponemos
+
+
+npm i express
+npm i mongoose
+en atlas: connect donde el cluster, alow access from anywhere y connect con aplicacion la del medio
+copiamos la llave y ponemos la contraseña
+npm i dotenv
+
+
+http://localhost:9000/api/users
+
+

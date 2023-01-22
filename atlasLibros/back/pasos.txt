@@ -1,0 +1,9 @@
+crear proyecto en atlas: completoAtlas
+crear database
+crear usuario:
+admin
+2vjflKglLelzrcgv
+añadir mi ip adress y finalizar
+connect en el cluster connect your application
+pegamos enlace en node
+ponemos contraseña y nombre database

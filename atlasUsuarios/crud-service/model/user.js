@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 
-// how our document look like
+
 const userSchema = mongoose.Schema({
     name: String,
     username: String,
@@ -11,7 +11,7 @@ const userSchema = mongoose.Schema({
 
 
 
-// we need to turn it into a model
+// creo esquema de mongo y lo exporto
 const postUser = mongoose.model('user', userSchema);
 
 export default postUser;

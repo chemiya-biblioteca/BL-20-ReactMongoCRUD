@@ -13,15 +13,15 @@ class Create extends Component {
       description: "",
       published_year: "",
       publisher: ""
-    };
+    };//creo un libro vacio en el estado
     this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);//enlazo los evnetos
   }
 
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value }, () => {
       console.log(this.state);
-    });
+    });//asigno el campo que he cambiado del liibro y lo guardo
   }
 
   onSubmit(e) {
@@ -33,7 +33,7 @@ class Create extends Component {
       description,
       published_year,
       publisher
-    } = this.state;
+    } = this.state;//cojo el estado
     axios
       .post("http://localhost:8080/api/book", {
         isbn,
@@ -43,7 +43,7 @@ class Create extends Component {
         published_year,
         publisher
       })
-      .then(result => {
+      .then(result => {//llamo la api para que lo guarde y vuelvo a la ruta principal
         this.props.history.push("/");
         console.log("submitted...");
       });
@@ -57,7 +57,7 @@ class Create extends Component {
       description,
       published_year,
       publisher
-    } = this.state;
+    } = this.state;//cojo la variable
 
     return (
       <div className="container">
@@ -73,9 +73,9 @@ class Create extends Component {
                   aria-hidden="true"
                 />{" "}
                 Book List
-              </Link>
+              </Link>{/**enlace para ir a la lista */}
             </h4>
-            <form onSubmit={this.onSubmit}>
+            <form onSubmit={this.onSubmit}>{/**evento para anejar el envio */}
               <div className="form-group">
                 <label htmlFor="isbn">ISBN:</label>
                 <input
@@ -85,7 +85,7 @@ class Create extends Component {
                   value={isbn}
                   onChange={this.onChange}
                   placeholder="ISBN"
-                />
+                />{/**enlazo con el atribuo y evento para cuiando cambie */}
               </div>
               <div className="form-group">
                 <label htmlFor="title">Title:</label>

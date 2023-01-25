@@ -8,19 +8,19 @@ class App extends Component {
     super(props);
     this.state = {
       books: []
-    };
+    };//creo las rpops y en el stado guardo los libros
   }
 
-  componentDidMount() {
+  componentDidMount() {//nada mas montar el componente
     axios.get("http://localhost:8080/api/book").then(res => {
       this.setState({ books: res.data }, () => {
         console.log(this.state.books);
-      });
+      });//mando la peticion a la api y guardo los libros en el estado
     });
   }
 
   render() {
-    const { books } = this.state;
+    const { books } = this.state;//cojo los libros del estado
     return (
       <div className="container">
         <div className="panel panel-default">
@@ -29,7 +29,7 @@ class App extends Component {
           </div>
           <div className="panel-body">
             <h4>
-              <Link to="/create">
+              <Link to="/create">{/**enlace ruta crear */}
                 <span
                   className="glyphicon glyphicon-plus-sign"
                   aria-hidden="true"
@@ -46,7 +46,7 @@ class App extends Component {
                   <th>Publisher</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody>{/**muestro los libros, del array, enlace para acceder a uno concreto y muestro sus atributos */}
                 {books.map(book => (
                   <tr key={book.title}>
                     <td>

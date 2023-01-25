@@ -14,6 +14,6 @@ const userSchema = mongoose.Schema({
     required: true
 
   }
-});
+});//creo esquema de mongo y lo exporto
 
 module.exports = mongoose.model('User', userSchema);

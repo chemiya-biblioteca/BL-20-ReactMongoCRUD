@@ -5,30 +5,30 @@ import { useNavigate, useParams } from "react-router-dom";
 const EditUser = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [gender, setGender] = useState("Male");
-  const navigate = useNavigate();
-  const { id } = useParams();
+  const [gender, setGender] = useState("Male");//campos del usuario
+  const navigate = useNavigate();//para navegar
+  const { id } = useParams();//recibo el id en la ruta
 
   useEffect(() => {
     getUserById();
-  }, []);
+  }, []);//al cargar primero busco los datos del id concreto
 
-  const getUserById = async () => {
+  const getUserById = async () => {//mando peticion a la api y lo pongo en el estado
     const response = await axios.get(`http://localhost:5000/users/${id}`);
     setName(response.data.name);
     setEmail(response.data.email);
     setGender(response.data.gender);
   };
 
-  const updateUser = async (e) => {
-    e.preventDefault();
+  const updateUser = async (e) => {//con patch solo mandas los campos cambiados
+    e.preventDefault();//con put tienes que mandar todos los campos aunque no los actualices
     try {
-      await axios.patch(`http://localhost:5000/users/${id}`, {
+      await axios.patch(`http://localhost:5000/users/${id}`, {//peticion a la api para actualizar
         name,
         email,
         gender,
       });
-      navigate("/");
+      navigate("/");//navegar a la principal
     } catch (error) {
       console.log(error);
     }
@@ -37,7 +37,7 @@ const EditUser = () => {
   return (
     <div className="columns mt-5">
       <div className="column is-half">
-        <form onSubmit={updateUser}>
+        <form onSubmit={updateUser}>{/**al subir llamas al evento */}
           <div className="field">
             <label className="label">Name</label>
             <div className="control">
@@ -47,7 +47,7 @@ const EditUser = () => {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Name"
-              />
+              />{/**enlazas con la variable  al cambiar guardas el nuevo */}
             </div>
           </div>
           <div className="field">

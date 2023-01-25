@@ -9,7 +9,7 @@ const Header = styled(Box)`
     & > div {
         margin-top: 50px;
     }
-`;
+`;//creo elemento con estilo
 
 const Image = styled('img')({
     width: '50%',
@@ -19,7 +19,7 @@ const Image = styled('img')({
 const CodeForInterview = () => {
 
     return (
-        <Header>
+        <Header>{/**muestro el elemento */}
             
         </Header>
     )

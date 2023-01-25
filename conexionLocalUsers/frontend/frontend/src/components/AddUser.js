@@ -5,8 +5,8 @@ import { useNavigate } from "react-router-dom";
 const AddUser = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [gender, setGender] = useState("Male");
-  const navigate = useNavigate();
+  const [gender, setGender] = useState("Male");//creaas variables con los campos
+  const navigate = useNavigate();//para la navegacion
 
   const saveUser = async (e) => {
     e.preventDefault();
@@ -15,8 +15,8 @@ const AddUser = () => {
         name,
         email,
         gender,
-      });
-      navigate("/");
+      });//llamas a la api para enviar los datos
+      navigate("/");//navegas a la ruta principal
     } catch (error) {
       console.log(error);
     }
@@ -25,7 +25,7 @@ const AddUser = () => {
   return (
     <div className="columns mt-5">
       <div className="column is-half">
-        <form onSubmit={saveUser}>
+        <form onSubmit={saveUser}>{/**llamas al metodo para manejarlo */}
           <div className="field">
             <label className="label">Name</label>
             <div className="control">
@@ -35,7 +35,7 @@ const AddUser = () => {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Name"
-              />
+              />{/**enlazas con el campo y cuando cambien actualizas el campo */}
             </div>
           </div>
           <div className="field">

@@ -3,18 +3,18 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 const UserList = () => {
-  const [users, setUser] = useState([]);
+  const [users, setUser] = useState([]);//lista de usuario
 
   useEffect(() => {
     getUsers();
-  }, []);
+  }, []);//al cargar los traigo
 
   const getUsers = async () => {
-    const response = await axios.get("http://localhost:5000/users");
-    setUser(response.data);
+    const response = await axios.get("http://localhost:5000/users");//hago peticion
+    setUser(response.data);//y los guardo
   };
 
-  const deleteUser = async (id) => {
+  const deleteUser = async (id) => {//hago peticion con el id y actualizo lista
     try {
       await axios.delete(`http://localhost:5000/users/${id}`);
       getUsers();
@@ -28,7 +28,7 @@ const UserList = () => {
       <div className="column is-half">
         <Link to="add" className="button is-success">
           Add New
-        </Link>
+        </Link>{/**enlace para navigar */}
         <table className="table is-striped is-fullwidth mt-2">
           <thead>
             <tr>
@@ -39,7 +39,7 @@ const UserList = () => {
               <th>Actions</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody>{/**muestro los de array, con sus campos y boton pasando el id o borrar al evento */}
             {users.map((user, index) => (
               <tr key={user._id}>
                 <td>{index + 1}</td>

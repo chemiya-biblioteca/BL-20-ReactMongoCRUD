@@ -7,7 +7,7 @@ import Create from "./components/create";
 import Show from "./components/show";
 import Edit from "./components/edit";
 
-
+//creo las rutas, con id y al componente que dirigen
 ReactDOM.render(
   <Router>
   <div>

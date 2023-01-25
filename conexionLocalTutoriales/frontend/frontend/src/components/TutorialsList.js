@@ -3,22 +3,22 @@ import TutorialDataService from "../services/TutorialService";
 import { Link } from "react-router-dom";
 
 const TutorialsList = () => {
-  const [tutorials, setTutorials] = useState([]);
+  const [tutorials, setTutorials] = useState([]);//creo variable para todos los tutoriales, par auno concreto y title y el index
   const [currentTutorial, setCurrentTutorial] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(-1);
   const [searchTitle, setSearchTitle] = useState("");
 
   useEffect(() => {
     retrieveTutorials();
-  }, []);
+  }, []);//al cargar traer todos
 
   const onChangeSearchTitle = e => {
-    const searchTitle = e.target.value;
+    const searchTitle = e.target.value;//coges el valor que te lelga y lo guardas
     setSearchTitle(searchTitle);
   };
 
   const retrieveTutorials = () => {
-    TutorialDataService.getAll()
+    TutorialDataService.getAll()//llamas a la api que los traiga y los guardas en la variable
       .then(response => {
         setTutorials(response.data);
         console.log(response.data);
@@ -28,19 +28,19 @@ const TutorialsList = () => {
       });
   };
 
-  const refreshList = () => {
+  const refreshList = () => {//recoges todos e inicias campos
     retrieveTutorials();
     setCurrentTutorial(null);
     setCurrentIndex(-1);
   };
 
-  const setActiveTutorial = (tutorial, index) => {
+  const setActiveTutorial = (tutorial, index) => {//guardas en las variables los argumentos
     setCurrentTutorial(tutorial);
     setCurrentIndex(index);
   };
 
   const removeAllTutorials = () => {
-    TutorialDataService.removeAll()
+    TutorialDataService.removeAll()//llamas a la api para que los borre y actualizas lista
       .then(response => {
         console.log(response.data);
         refreshList();
@@ -51,9 +51,9 @@ const TutorialsList = () => {
   };
 
   const findByTitle = () => {
-    TutorialDataService.findByTitle(searchTitle)
+    TutorialDataService.findByTitle(searchTitle)//llamas a la api con el titulo de la variable
       .then(response => {
-        setTutorials(response.data);
+        setTutorials(response.data);//asignas el resutlado
         console.log(response.data);
       })
       .catch(e => {
@@ -77,7 +77,7 @@ const TutorialsList = () => {
               className="btn btn-outline-secondary"
               type="button"
               onClick={findByTitle}
-            >
+            >{/**enlazas con elt itulo y evento para gestioanrlo y buscar  */}
               Search
             </button>
           </div>
@@ -98,13 +98,13 @@ const TutorialsList = () => {
               >
                 {tutorial.title}
               </li>
-            ))}
+            ))}{/**muestras todos los tutoriales y enlazas con boton para activar uno y al que tenga el index le das estilo css */}
         </ul>
 
         <button
           className="m-3 btn btn-sm btn-danger"
           onClick={removeAllTutorials}
-        >
+        >{/**bton para borrar todos */}
           Remove All
         </button>
       </div>
@@ -130,13 +130,13 @@ const TutorialsList = () => {
               </label>{" "}
               {currentTutorial.published ? "Published" : "Pending"}
             </div>
-            <button>
+            <button>{/**si hay algun tutorial seleccinado muestras sus datos enlazandolos */}
             <Link
               to={"/tutorials/" + currentTutorial.id}
-              className="badge badge-warning"
+              className=""
             >
               Edit
-            </Link>
+            </Link>{/**boton para editarlo */}
             </button>
           </div>
         ) : (
@@ -144,7 +144,7 @@ const TutorialsList = () => {
             <br />
             <p>Please click on a Tutorial...</p>
           </div>
-        )}
+        )}{/**si no hay ninguno seleccionado */}
       </div>
     </div>
   );

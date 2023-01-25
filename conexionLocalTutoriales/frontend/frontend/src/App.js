@@ -12,7 +12,7 @@ function App() {
     <div>
       <nav className="navbar navbar-expand navbar-dark bg-dark">
         <a href="/tutorials" className="navbar-brand">
-          bezKoder
+          prueba
         </a>
         <div className="navbar-nav mr-auto">
           <li className="nav-item">
@@ -25,12 +25,12 @@ function App() {
               Add
             </Link>
           </li>
-        </div>
+        </div>{/**enlaces a las rutas de la barra de arriba */}
       </nav>
       
 
       <div className="container mt-3">
-        <Routes>
+        <Routes>{/**defino rutas y al componente que dirigen */}
           <Route path="/" element={<TutorialsList/>} />
           <Route path="/tutorials" element={<TutorialsList/>} />
           <Route path="/add" element={<AddTutorial/>} />
